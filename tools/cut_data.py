@@ -43,9 +43,9 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
 
     def crop(cnt, crop_image, crop_label, is_show=is_show):
         _name = image_name.split(".")[0]
-        image_save_path = os.path.join(image_save_dir, _name+"_"+str(cnt[0])+"_"+str(cnt[1])+".png")
-        label_save_path = os.path.join(label_save_dir, _name+"_"+str(cnt[0])+"_"+str(cnt[1])+".png")
-        label_show_save_path = os.path.join(label_show_save_dir, _name+"_"+str(cnt[0])+str(cnt[1])+".png")
+        image_save_path =      os.path.join(image_save_dir,      _name + "_" + str(cnt[0]) + "_" + str(cnt[1]) + ".png")
+        label_save_path =      os.path.join(label_save_dir,      _name + "_" + str(cnt[0]) + "_" + str(cnt[1]) + ".png")
+        label_show_save_path = os.path.join(label_show_save_dir, _name + "_" + str(cnt[0]) + "_" + str(cnt[1]) + ".png")
         cv.imwrite(image_save_path, crop_image)
         cv.imwrite(label_save_path, crop_label)
         if is_show:
