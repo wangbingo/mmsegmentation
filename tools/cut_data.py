@@ -13,7 +13,6 @@ Image.MAX_IMAGE_PIXELS = 1000000000000000
 TARGET_W, TARGET_H = 512, 512
 STEP = 496
 
-
 def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
     # 初始化路径
     image_save_dir = os.path.join(save_dir, "images/")
@@ -29,7 +28,15 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
     stride = target_h - overlap
     
     image = np.asarray(Image.open(image_path))
-    label = np.asarray(Image.open(label_path))
+    label = np.array(Image.open(label_path))
+    #print("np.array.open...............")
+    label[label == 1] = 2
+    #print("1->2.......................")
+    label[label == 0] = 1
+    #print("0->1.......................")
+    label[label == 2] = 0
+    #print("2->0.......................")
+
     h, w = image.shape[0], image.shape[1]
     print("原始大小: ", w, h)
     if (w-target_w) % stride:
@@ -37,10 +44,7 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
     if (h-target_h) % stride:
         new_h = ((h-target_h)//stride + 1)*stride + target_h
     image = cv.copyMakeBorder(image,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT,0)
-    # label = cv.copyMakeBorder(label,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT,1)
-    # let the makeup color to white
-    white = [255, 255, 255]
-    label = cv.copyMakeBorder(label,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT, value = white)
+    label = cv.copyMakeBorder(label,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT,1)
     h, w = image.shape[0], image.shape[1]
     print("填充至整数倍: ", w, h)
 
@@ -70,6 +74,9 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
 def get_train_val(data_dir):
     all_images_dir = os.path.join(data_dir, "images/")
     all_labels_dir = os.path.join(data_dir, "labels/")
+
+    # to do: filter the all-0 labels pics, move them out of the all_*_dir
+
     train_imgs_dir = os.path.join(data_dir, "train/images/")
     if not os.path.exists(train_imgs_dir): os.makedirs(train_imgs_dir)
     val_imgs_dir = os.path.join(data_dir, "val/images/")
@@ -99,11 +106,11 @@ def get_train_val(data_dir):
 
 if __name__ == "__main__":
     data_dir = "/content/data"
-    # data_dir = "/home/ma-user/work/RSC/data/"
+    # data_dir = "/Users/wangbing/Downloads/xian/data"
     img_name1 = "382.png"
     img_name2 = "182.png"
     label_name1 = "382_label.png"
     label_name2 = "182_label.png"
     cut_images(img_name1, os.path.join(data_dir, img_name1), os.path.join(data_dir, label_name1), data_dir)
-    #cut_images(img_name2, os.path.join(data_dir, img_name2), os.path.join(data_dir, label_name2), data_dir)
+    cut_images(img_name2, os.path.join(data_dir, img_name2), os.path.join(data_dir, label_name2), data_dir)
     get_train_val(data_dir)
