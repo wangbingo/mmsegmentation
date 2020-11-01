@@ -80,7 +80,7 @@ def get_train_val(data_dir):
     for name in os.listdir(all_images_dir):
         image_path = os.path.join(all_images_dir, name)
         label_path = os.path.join(all_labels_dir, name)
-        if random.randint(0, 10) < 2:
+        if random.randint(0, 10) < 3:                 #  3/7 = val/train
             image_save = os.path.join(val_imgs_dir, name)
             label_save = os.path.join(val_labels_dir, name)
         else:
