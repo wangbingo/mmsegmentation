@@ -105,5 +105,5 @@ if __name__ == "__main__":
     label_name1 = "382_label.png"
     label_name2 = "182_label.png"
     cut_images(img_name1, os.path.join(data_dir, img_name1), os.path.join(data_dir, label_name1), data_dir)
-    cut_images(img_name2, os.path.join(data_dir, img_name2), os.path.join(data_dir, label_name2), data_dir)
+    #cut_images(img_name2, os.path.join(data_dir, img_name2), os.path.join(data_dir, label_name2), data_dir)
     get_train_val(data_dir)
