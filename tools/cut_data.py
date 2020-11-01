@@ -98,7 +98,7 @@ def get_train_val(data_dir):
 
 
 if __name__ == "__main__":
-    data_dir = "/Users/wangbing/Downloads/xian/data"
+    data_dir = "/content/data"
     # data_dir = "/home/ma-user/work/RSC/data/"
     img_name1 = "382.png"
     img_name2 = "182.png"
