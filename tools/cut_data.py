@@ -37,7 +37,9 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
     if (h-target_h) % stride:
         new_h = ((h-target_h)//stride + 1)*stride + target_h
     image = cv.copyMakeBorder(image,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT,0)
-    label = cv.copyMakeBorder(label,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT,1)
+    # label = cv.copyMakeBorder(label,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT,1)
+    # toggle  the makeup color to 0
+    label = cv.copyMakeBorder(label,0,new_h-h,0,new_w-w,cv.BORDER_CONSTANT,0)
     h, w = image.shape[0], image.shape[1]
     print("填充至整数倍: ", w, h)
 
