@@ -13,11 +13,12 @@ class ADE20KDataset(CustomDataset):
     """
     CLASSES = ('road')
 
-    PALETTE = [[0, 0, 0]]    # black means forground
+    PALETTE = [[0, 0, 0]]    # [0,0,0]black means forground
 
     def __init__(self, **kwargs):
         super(ADE20KDataset, self).__init__(
             img_suffix='.png',
             seg_map_suffix='.png',
-            reduce_zero_label=True,
+            # reduce_zero_label=True,
+            reduce_zero_label = False,
             **kwargs)
