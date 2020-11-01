@@ -10,8 +10,8 @@ from tqdm import tqdm
 import random
 import shutil
 Image.MAX_IMAGE_PIXELS = 1000000000000000
-TARGET_W, TARGET_H = 1024, 1024
-STEP = 992
+TARGET_W, TARGET_H = 512, 512
+STEP = 496
 
 
 def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
