@@ -11,9 +11,9 @@ class ADE20KDataset(CustomDataset):
     The ``img_suffix`` is fixed to '.jpg' and ``seg_map_suffix`` is fixed to
     '.png'.
     """
-    CLASSES = ('road')
+    CLASSES = ('bg', 'road')
 
-    PALETTE = [[255, 255, 255]]    # [255,255,255]white means forground
+    PALETTE = [[0, 0, 0], [255, 255, 255]]    # [255,255,255]white means forground
 
     def __init__(self, **kwargs):
         super(ADE20KDataset, self).__init__(
