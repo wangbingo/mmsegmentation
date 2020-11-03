@@ -30,11 +30,11 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
     image = np.asarray(Image.open(image_path))
     label = np.array(Image.open(label_path))
     #print("np.array.open...............")
-    label[label == 1] = 2
+    label[label == 0] = 0.5
     #print("1->2.......................")
-    label[label == 0] = 1
+    label[label == 1] = 0
     #print("0->1.......................")
-    label[label == 2] = 0
+    #label[label == 2] = 0
     #print("2->0.......................")
 
     h, w = image.shape[0], image.shape[1]
