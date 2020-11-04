@@ -30,11 +30,11 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
     image = np.asarray(Image.open(image_path))
     label = np.array(Image.open(label_path))
     #print("np.array.open...............")
-    #label[label == 1] = 2
+    label[label == 1] = 2
     #print("1->2.......................")
-    label[label == 0] = 0.4
+    label[label == 0] = 1
     #print("0->1.......................")
-    label[label == 1] = 0
+    label[label == 2] = 0
     #print("2->0.......................")
 
     h, w = image.shape[0], image.shape[1]
@@ -106,7 +106,7 @@ def get_train_val(data_dir):
 
 if __name__ == "__main__":
     data_dir = "/content/data"
-    # data_dir = "/Users/wangbing/Downloads/xian/data"
+    #data_dir = "/Users/wangbing/Downloads/xian/data"
     img_name1 = "382.png"
     img_name2 = "182.png"
     label_name1 = "382_label.png"
