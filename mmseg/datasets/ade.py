@@ -13,7 +13,7 @@ class ADE20KDataset(CustomDataset):
     """
     CLASSES = ('road')
 
-    PALETTE = [[255, 255, 255]]           #########
+    PALETTE = [[63, 63, 63]]           #########
 
     def __init__(self, **kwargs):
         super(ADE20KDataset, self).__init__(
