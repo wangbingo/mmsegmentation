@@ -75,7 +75,17 @@ def get_train_val(data_dir):
     all_images_dir = os.path.join(data_dir, "images/")
     all_labels_dir = os.path.join(data_dir, "labels/")
 
-    # to do: filter the all-0 labels pics, move them out of the all_*_dir
+    # drop the all-0 image_and_label  pics
+    for name in os.listdir(all_images_dir):
+        image_path = os.path.join(all_images_dir, name)
+        label_path = os.path.join(all_labels_dir, name)
+        img_image = Image.open(image_path)
+        img_label = Image.open(label_path)
+        img_image = np.array(img_image)
+        img_label = np.array(img_label)
+        if np.max(img_image) == 0 or np.max(img_label) == 0:
+            os.remove(image_path)
+            os.remove(label_path)
 
     train_imgs_dir = os.path.join(data_dir, "train/images/")
     if not os.path.exists(train_imgs_dir): os.makedirs(train_imgs_dir)
