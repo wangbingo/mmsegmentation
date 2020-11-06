@@ -21,6 +21,6 @@ class ADE20KDataset(CustomDataset):
             img_suffix='.png',
             seg_map_suffix='.png',
             ignore_index=255,
-            reduce_zero_label=True,
-            # reduce_zero_label = False,
+            # reduce_zero_label=True,
+            reduce_zero_label = False,
             **kwargs)
