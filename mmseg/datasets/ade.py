@@ -15,12 +15,12 @@ class ADE20KDataset(CustomDataset):
     CLASSES = ('road', )
     # PALETTE = [[0, 0, 0], [63, 63, 63]]           #########
     PALETTE = [[63, 63, 63], ]
-    
+
     def __init__(self, **kwargs):
         super(ADE20KDataset, self).__init__(
             img_suffix='.png',
             seg_map_suffix='.png',
             ignore_index=255,
-            # reduce_zero_label=True,
-            reduce_zero_label = False,
+            reduce_zero_label=True,
+            # reduce_zero_label = False,
             **kwargs)
