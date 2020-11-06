@@ -1,5 +1,5 @@
 # model settings
-norm_cfg = dict(type='BN', requires_grad=True)           #
+norm_cfg = dict(type='BN', requires_grad=True)           ######
 model = dict(
     type='CascadeEncoderDecoder',
     num_stages=2,
@@ -44,7 +44,7 @@ model = dict(
             num_convs=1,
             concat_input=False,
             dropout_ratio=-1,
-            num_classes=1,                      ##
+            num_classes=1,                      #####
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
@@ -57,7 +57,7 @@ model = dict(
             channels=512,
             ocr_channels=256,
             dropout_ratio=-1,
-            num_classes=1,                    ##
+            num_classes=1,                    #####
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
