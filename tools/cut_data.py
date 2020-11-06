@@ -56,6 +56,7 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
         cv.imwrite(image_save_path, crop_image)
         # cv.imwrite(label_save_path, crop_label)
         # labels switch to show format, the same as ADEChallengeData2016 in MMseg
+        crop_label =  crop_label.convert('P')
         cv.imwrite(label_save_path, crop_label)                    #########
         if is_show:
             cv.imwrite(label_show_save_path, crop_label*255)
