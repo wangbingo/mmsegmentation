@@ -18,9 +18,9 @@ class CityscapesDataset(CustomDataset):
     fixed to '_gtFine_labelTrainIds.png' for Cityscapes dataset.
     """
 
-    CLASSES = ('road')
+    CLASSES = ('bg', 'road')
 
-    PALETTE = [[128, 64, 128]]
+    PALETTE = [[0, 0, 0], [128, 64, 128]]
 
     def __init__(self, **kwargs):
         super(CityscapesDataset, self).__init__(
