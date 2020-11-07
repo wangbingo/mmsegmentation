@@ -24,7 +24,9 @@ def cross_entropy(pred,
         ignore_index=ignore_index)
 
     # apply weights and do the reduction
-    ##weight = torch.Tensor()           torch.tensor([[1., -1.], [1., -1.]])    #####
+    
+    weight = torch.tensor([.5, 1.5])    #####
+    
     if weight is not None:
         weight = weight.float()
     loss = weight_reduce_loss(
