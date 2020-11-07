@@ -55,7 +55,7 @@ def cut_images(image_name, image_path, label_path, save_dir, is_show=True):
         label_show_save_path = os.path.join(label_show_save_dir, _name + "_" + str(cnt[0]) + "_" + str(cnt[1]) + ".png")
         cv.imwrite(image_save_path, crop_image)
         # cv.imwrite(label_save_path, crop_label)
-        # 
+        # labels switch to show format, the same as ADEChallengeData2016 in MMseg
         cv.imwrite(label_save_path, crop_label)                    #########
         if is_show:
             cv.imwrite(label_show_save_path, crop_label*255)
@@ -75,7 +75,7 @@ def get_train_val(data_dir):
     all_images_dir = os.path.join(data_dir, "images/")
     all_labels_dir = os.path.join(data_dir, "labels/")
 
-    # drop the all-0 image_and_label  pics
+    # drop the all-0 image_and_label files
     for name in os.listdir(all_images_dir):
         image_path = os.path.join(all_images_dir, name)
         label_path = os.path.join(all_labels_dir, name)
@@ -115,8 +115,8 @@ def get_train_val(data_dir):
 
 
 if __name__ == "__main__":
-    data_dir = "/content/data"
-    #data_dir = "/Users/wangbing/Downloads/xian/data"
+    # data_dir = "/content/data"
+    data_dir = "/Users/wangbing/Downloads/xian/data"
     img_name1 = "382.png"
     img_name2 = "182.png"
     label_name1 = "382_label.png"
