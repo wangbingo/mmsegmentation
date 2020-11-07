@@ -48,7 +48,8 @@ model = dict(
             norm_cfg=norm_cfg,
             align_corners=False,
             loss_decode=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4,
+                class_weight=[0.5, 1.5])),   ####
         dict(
             type='OCRHead',
             in_channels=[18, 36, 72, 144],
