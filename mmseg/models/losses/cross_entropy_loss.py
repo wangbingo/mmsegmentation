@@ -22,6 +22,9 @@ def cross_entropy(pred,
         weight=class_weight,
         reduction='none',
         ignore_index=ignore_index)
+    
+    from IPython import embed
+    embed()
 
     # apply weights and do the reduction
     
