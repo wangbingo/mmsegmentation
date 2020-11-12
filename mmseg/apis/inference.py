@@ -113,5 +113,6 @@ def show_result_pyplot(model, img, result, palette=None, fig_size=(15, 10)):
         model = model.module
     img = model.show_result(img, result, palette=palette, show=False)
     plt.figure(figsize=fig_size)
-    plt.imshow(mmcv.bgr2rgb(img))
-    plt.show()
+    # plt.imshow(mmcv.bgr2rgb(img))
+    plt.imsave('my_demo.png', mmcv.bgr2rgb(img))
+    # plt.show()
