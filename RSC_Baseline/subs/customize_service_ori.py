@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 from collections import OrderedDict
-# from unet import UNet
-
-from mmsegmentation.mmseg.apis import inference_segmentor, init_segmentor  ###
-
+from unet import UNet
 import numpy as np
 
 import torch
@@ -27,11 +24,8 @@ class ImageClassificationService(PTServingBaseService):
         self.model_name = model_name
         self.model_path = model_path
 
-        # self.model = UNet(3, 2)
-        self.model = init_segmentor('mmsegmentaion/config/ocrnet/ocrnet_hr18s_512x512_40k_cityscapes.py', 
-                                    self.model_path)              ###
-        # result = inference_segmentor(self.model, img)
-        '''self.use_cuda = False
+        self.model = UNet(3, 2)
+        self.use_cuda = False
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if torch.cuda.is_available():
             print('Using GPU for inference')
@@ -43,7 +37,7 @@ class ImageClassificationService(PTServingBaseService):
             print('Using CPU for inference')
             checkpoint = torch.load(self.model_path, map_location='cpu')
             self.model.load_state_dict(checkpoint['state_dict'])
-        '''
+
         self.model.eval()
 
     def _preprocess(self, data):
@@ -59,8 +53,7 @@ class ImageClassificationService(PTServingBaseService):
     def _inference(self, data):
         img = data["input_img"]
         data = img
-        # target_l = 1024
-        target_l = 512               ####
+        target_l = 1024
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         data = data.transpose(2, 0, 1)
         if data.max() > 1: data = data / 255
@@ -76,9 +69,7 @@ class ImageClassificationService(PTServingBaseService):
                 img = img[np.newaxis, :, :, :].astype(np.float32)
                 img = torch.from_numpy(img)
                 img = Variable(img.to(device))
-                # result = inference_segmentor(self.model, img)
-                out_l = inference_segmentor(self.model, img)            #####
-                # out_l = self.model(img)
+                out_l = self.model(img)
                 out_l = out_l.cpu().data.numpy()
                 out_l = np.argmax(out_l, axis=1)[0]
                 label[x_s:x_e, y_s:y_e] = out_l.astype(np.int8)
