@@ -18,7 +18,7 @@ class CityscapesDataset(CustomDataset):
     fixed to '_gtFine_labelTrainIds.png' for Cityscapes dataset.
     """
 
-    CLASSES = ('bg', 'road')
+    CLASSES = ('bg', 'kidney')
 
     PALETTE = [[0, 0, 0], [128, 64, 128]]
 
