@@ -2,7 +2,8 @@
 dataset_type = 'CityscapesDataset'
 data_root = '../../input/256x256/'     #####
 img_norm_cfg = dict(
-    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
+    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)   ### ori
+    # mean=[175.099, 147.099, 181.427], std=[55.732, 71.613, 53.056], to_rgb=True)   ### kidney
 crop_size = (256, 256)                 ########
 train_pipeline = [
     dict(type='LoadImageFromFile'),
