@@ -19,9 +19,9 @@ class CityscapesDataset(CustomDataset):
     """
 
     # CLASSES = ('bg', 'kidney')
-    CLASSES = ('kidney')
+    CLASSES = ('kidney',)
     # PALETTE = [[0, 0, 0], [128, 64, 128]]
-    PALETTE = [[128, 64, 128]]
+    PALETTE = [[128, 64, 128],]
 
     def __init__(self, **kwargs):
         super(CityscapesDataset, self).__init__(
